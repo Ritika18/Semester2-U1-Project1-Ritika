@@ -1,5 +1,6 @@
 class Fish
 {
+  //variables
   private PVector _location;
   private PVector _speed;
   private PVector _size;
@@ -10,6 +11,7 @@ class Fish
   private boolean _moveToMouse;
   private boolean _edge;
   
+  //fish constructor to give each of the variables different values
   Fish(boolean edge, boolean moveToMouse, PVector location, PVector speed, PVector colors, PVector mouse, PVector position, PImage image)
   {
     _edge = edge;
@@ -24,14 +26,18 @@ class Fish
   
   private void Draw()
   {
+     //draws the image
      stroke(255);
      fill(_colors.x, _colors.y, _colors.z);
      image(_image,_location.x,_location.y);
+     
+     //this was to test out the code, so I originally used circles to draw the fish
      //ellipse(_location.x, _location.y, _size.x, _size.y);
   }
   
   private void Movement()
   {
+    //This is used for making the position of the fish move towards the mouse -- BLUE fish
     if(_moveToMouse == true)
     {
       _mouse.x = mouseX;
@@ -44,6 +50,7 @@ class Fish
       _location.add(_position);
     }
     
+    //this is creating boundaries for the rest of the fish so they don't go off screen
     if(_moveToMouse == false)
     {
       

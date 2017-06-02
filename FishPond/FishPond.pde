@@ -1,9 +1,20 @@
+/*
+Name: Fish Pond
+
+Description: This game uses 5 different colored fish which move around the screen as if
+they were in the ocean swimming around. 4 of the fish have designated locations for
+where they are moving towards. The last fish, blue, follows the mouse. This makes this 
+more interactive with the viewer.
+*/
+
+//Creating all of the objects
 Fish blueFish[] = new Fish[50];
 Fish orangeFish[] = new Fish[20];
 Fish pinkFish[] = new Fish[100];
 Fish greenFish[] = new Fish[10];
 Fish yellowFish[] = new Fish[60];
 
+//making all of the images
 PImage green;
 PImage blue;
 PImage yellow;
@@ -14,6 +25,7 @@ void setup()
 {
   fullScreen();
   
+  //calling the images from the data folder and resizing them
   green = loadImage("Green.png");
   green.resize(100,0);
 
@@ -29,6 +41,7 @@ void setup()
   orange = loadImage("Orange.png");
   orange.resize(100,0);
     
+  //constructor for the different fish
   for (int i = 0; i < 50; i++)
   {    
     blueFish[i] = new Fish(false, true, new PVector(random(0, width), random(0, height)), 
@@ -64,16 +77,6 @@ void setup()
     new PVector (6, 6),  new PVector(246,250,125), 
     new PVector(mouseX, mouseY), new PVector(0,0), yellow); 
   }
-  
-    /*
-    _location = location;
-    _speed = speed;
-    _size = size;
-    _colors = colors;
-    _mouse = mouse;
-    _position = position;
-    _image = image;
-    */
 }
 
 
@@ -81,7 +84,7 @@ void draw()
 {
   background(0);
 
-  
+  //Drawing and moving all of the fish
   for (int i = 0; i < 50; i++)
   {
     blueFish[i].Draw();
@@ -112,6 +115,7 @@ void draw()
     yellowFish[i].Movement();
   }
   
+  //When the time goes past 20000 millis, then the code will end
   if(millis() > 20000)
   {
     exit();
